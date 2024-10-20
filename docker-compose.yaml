@@ -1,25 +1,24 @@
 version: "3"
 networks:
- expense:
+  expense:
 volumes:
- mysql: # docker volume create mysql
+  mysql:  # docker volume create mysql
 services:
   mysql:
-   image: siva3150/mysql:v1
-   container_name: mysql  # --name mysql
-   volumes:
-   - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
+    image: siva3150/mysql:v1
+    container_name: mysql # --name mysql
+    volumes:
+    - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
   backend:
-   image: siva3150/backend:v1
-   container_name: backend
-   command: sh - c "sleep 5 && node /opt/server/index.js"
-   depends_on:
-   - mysql
+    image: siva3150/backend:v1
+    container_name: backend
+    command: sh -c "sleep 5 && node /opt/server/index.js"
+    depends_on:
+    - mysql
   frontend:
-   image: siva3150/frontend:v1
-   container_name: frontend
-   ports:
-   - 80:80
-   depends_on: 
-   - backend
-   
+    image: siva3150/frontend:v1
+    container_name: frontend
+    ports:
+    - 80:80
+    depends_on:
+    - backend
