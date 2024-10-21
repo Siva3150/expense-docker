@@ -1,6 +1,8 @@
 FROM node:20.18.0-alpine3.20
 EXPOSE 8080
 ENV DB_HOST="mysql"
+RUN echo "Hello Docker"
+RUN echo "Hello docker world"
 RUN addgroup -S expense && adduser -S expense -G expense
 RUN mkdir /opt/server
 RUN chown -R expense:expense /opt/server 
@@ -9,8 +11,6 @@ COPY package.json .
 COPY *.js .
 RUN npm install
 USER expense
-RUN echo "Hello Docker"
-RUN echo "Hello docker world"
 CMD ["node", "index.js"]
 
 # Before implemented best practices
