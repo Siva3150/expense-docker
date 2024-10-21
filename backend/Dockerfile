@@ -9,6 +9,8 @@ COPY package.json .
 COPY *.js .
 RUN npm install
 USER expense
+RUN "Hello Docker"
+RUN "Hello docker world"
 CMD ["node", "index.js"]
 
 # Before implemented best practices
